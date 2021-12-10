@@ -84,6 +84,7 @@ combined_text = "".join(tokens)
 with open('../table/table'+ str(1) +'.txt', 'rb') as fp:
     table = pickle.load(fp)
 
+print('reference number: ',table[0][1])
 with open('../processed_files/' + str(table[0][1]) + '.txt', 'r', encoding='UTF-8') as text2:
     file2 = text2.read()
 
