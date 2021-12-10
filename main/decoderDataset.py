@@ -76,53 +76,34 @@ class TestDataset(Dataset):
         return self.len
 
 
+# trainset =  TestDataset('train', 1)
+# token_dict = trainset[0]
 
-trainset =  TestDataset('train', 1)
-token_dict = trainset[0]
+# tokens = config.tokenizer.convert_ids_to_tokens(token_dict['tokens_tensor'].tolist())
+# combined_text = "".join(tokens)
 
-tokens = config.tokenizer.convert_ids_to_tokens(token_dict['tokens_tensor'].tolist())
-combined_text = "".join(tokens)
+# with open('../table/table'+ str(1) +'.txt', 'rb') as fp:
+#     table = pickle.load(fp)
 
-with open('../table/table'+ str(1) +'.txt', 'rb') as fp:
-    table = pickle.load(fp)
+# print('test number: ', table[0][0])
+# with open('../processed_files/' + str(table[0][1]) + '.txt', 'r', encoding='UTF-8') as text2:
+#     file2 = text2.read()
 
-print('test number: ', table[0][0])
-with open('../processed_files/' + str(table[0][1]) + '.txt', 'r', encoding='UTF-8') as text2:
-    file2 = text2.read()
+# # 渲染前後差異，毫無反應就是個 print。可以直接看輸出結果
+# print(f"""[原始文本]
+# 句子 2：{file2}
 
-# 渲染前後差異，毫無反應就是個 print。可以直接看輸出結果
-print(f"""[原始文本]
-句子 2：{file2}
+# --------------------
 
---------------------
+# [Dataset 回傳的 tensors]
+# tokens_tensor  ：{token_dict['tokens_tensor']}
 
-[Dataset 回傳的 tensors]
-tokens_tensor  ：{token_dict['tokens_tensor']}
+# segments_tensor：{token_dict['segments_tensor']}
 
-segments_tensor：{token_dict['segments_tensor']}
+# masks_tensor : {token_dict['masks_tensor']}
 
-masks_tensor : {token_dict['masks_tensor']}
+# --------------------
 
---------------------
-
-[還原 tokens_tensors]
-{combined_text}
-""")
-
-# trainset = ArticleClassificationDataset('train', 1)
-# train_data_loader = DataLoader(trainset, batch_size=config.BATCH_SIZE)
-# data = next(iter(train_data_loader))
-
-# print(f"""
-# tokens_tensors.shape   = {data['tokens_tensor'].shape} 
-# {data['tokens_tensor']}
-# ------------------------
-# segments_tensors.shape = {data['segments_tensor'].shape}
-# {data['segments_tensor']}
-# ------------------------
-# masks_tensors.shape    = {data['masks_tensor'].shape}
-# {data['masks_tensor']}
-# ------------------------
-# label_ids.shape        = {data['target'].shape}
-# {data['target']}
+# [還原 tokens_tensors]
+# {combined_text}
 # """)
