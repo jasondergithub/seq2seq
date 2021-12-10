@@ -2,7 +2,7 @@ import pickle
 from tqdm import tqdm
 from encoderDataset import ReferenceDataset
 from decoderDataset import TestDataset
-from data_loader import create_decoder_batch, create_encoder_batch
+import data_loader
 from torch.utils.data import DataLoader
 
 def train_fn(src_loader):
@@ -25,9 +25,9 @@ if __name__ == "__main__":
         table = pickle.load(fp)
 
     encoder_trainset = ReferenceDataset('train', 1)
-    encoder_data_loader = DataLoader(encoder_trainset, batch_size=4, collate_fn=create_encoder_batch)
+    encoder_data_loader = DataLoader(encoder_trainset, batch_size=4, collate_fn=data_loader.create_encoder_batch)
 
     decoder_trainset = ReferenceDataset('train', 1)
-    decoder_data_loader = DataLoader(decoder_trainset, batch_size=4, collate_fn=create_decoder_batch)
+    decoder_data_loader = DataLoader(decoder_trainset, batch_size=4, collate_fn=data_loader.create_decoder_batch)
 
     train_fn(decoder_data_loader)
