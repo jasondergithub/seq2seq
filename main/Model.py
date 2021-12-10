@@ -69,5 +69,6 @@ class Seq2Seq(nn.Module):
         self.decoder = decoder
         self.device = device
 
-    def forward(self, reference_dataloader, test_dataloader):
+    def forward(self, reference_dataloader, trg_dataloader):
+
         pass

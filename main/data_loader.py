@@ -64,21 +64,39 @@ masks_tensors.shape    = {masks_tensors.shape}
 """)
 '''    
 
-with open('../table/table'+ str(1) +'.txt', 'rb') as fp:
-    table = pickle.load(fp)
-print(table[0:4])
+# with open('../table/table'+ str(1) +'.txt', 'rb') as fp:
+#     table = pickle.load(fp)
+# print(table[0:4])
 
-encoder_trainset = ReferenceDataset('train', 1)
-encoder_data_loader = DataLoader(encoder_trainset, batch_size=4, collate_fn=create_encoder_batch)
-data = next(iter(encoder_data_loader))
+# encoder_trainset = ReferenceDataset('train', 1)
+# encoder_data_loader = DataLoader(encoder_trainset, batch_size=4, collate_fn=create_encoder_batch)
+# data = next(iter(encoder_data_loader))
 
-print(f"""
-tokens_tensors.shape   = {data['tokens_tensor'].shape} 
-{data['tokens_tensor']}
-------------------------
-segments_tensors.shape = {data['segments_tensor'].shape}
-{data['segments_tensor']}
-------------------------
-masks_tensors.shape    = {data['masks_tensor'].shape}
-{data['masks_tensor']}
-""")
+# print(f"""
+# tokens_tensors.shape   = {data['tokens_tensor'].shape} 
+# {data['tokens_tensor']}
+# ------------------------
+# segments_tensors.shape = {data['segments_tensor'].shape}
+# {data['segments_tensor']}
+# ------------------------
+# masks_tensors.shape    = {data['masks_tensor'].shape}
+# {data['masks_tensor']}
+# """)
+
+
+# decoder_trainset = TestDataset('train', 1)
+# decoder_data_loader = DataLoader(decoder_trainset, batch_size=16, collate_fn=create_decoder_batch)
+# data = next(iter(decoder_data_loader))
+# print(f"""
+# tokens_tensors.shape   = {data['tokens_tensor'].shape} 
+# {data['tokens_tensor']}
+# ------------------------
+# segments_tensors.shape = {data['segments_tensor'].shape}
+# {data['segments_tensor']}
+# ------------------------
+# masks_tensors.shape    = {data['masks_tensor'].shape}
+# {data['masks_tensor']}
+# ------------------------
+# label_tensors.shape = {data['target'].shape}
+# {data['target']}
+# """)

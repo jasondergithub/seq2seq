@@ -102,6 +102,8 @@ class TestDataset(Dataset):
 
 # masks_tensor : {token_dict['masks_tensor']}
 
+# labels_tensor : {token_dict['target']}
+
 # --------------------
 
 # [還原 tokens_tensors]
