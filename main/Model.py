@@ -69,6 +69,9 @@ class Seq2Seq(nn.Module):
         self.decoder = decoder
         self.device = device
 
-    def forward(self, reference_dataloader, trg_dataloader):
+    def forward(self, reference_data, trg_data):
 
-        pass
+        hidden_output = self.encoder(reference_data[0], reference_data[1], reference_data[2])
+        output = self.decoder(trg_data[0], trg_data[1], trg_data[2], hidden_output)
+        
+        return output
