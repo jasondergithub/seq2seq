@@ -8,13 +8,16 @@ keys_list = list(keywords)
 keyword_list = []
 
 # iterate files in the given directory
-directory = r'C:\Users\劉碩元\Desktop\AI-CUP\publicTestData'
+directory = r'C:\Users\劉碩元\Desktop\seq2seq\publicTestData'
 sentence = ''
+count = 0
 for filename in os.listdir(directory):
     with open('../publicTestData/' + filename, 'r', encoding='utf-8') as f:
         for line in f:
-            sentence = line[:-1]
-            break   
+            sentence += line[:-1]
+            count += 1
+            if count == 2:
+                break   
     with open('../publicTestData/' + filename, 'r', encoding='utf-8') as f:
         text = f.read()
 
@@ -32,3 +35,5 @@ for filename in os.listdir(directory):
     f.write(sentence)
     f.close()
     keyword_list.clear()
+    count = 0
+    sentence = ''    
