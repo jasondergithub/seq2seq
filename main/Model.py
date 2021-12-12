@@ -33,7 +33,7 @@ class Decoder(nn.Module):
         self.bert = BertModel(config.bert_config)
         self.linear1 = nn.Linear(768, 512)
         self.transformer_decoder = nn.TransformerDecoder(
-            nn.TransformerDecoderLayer(d_model=512, nhead=2, batch_first=True), num_layers=6)
+            nn.TransformerDecoderLayer(d_model=512, nhead=1, batch_first=True), num_layers=6)
         self.linear2 = nn.Linear(512, 128)
         self.linear3 = nn.Linear(128, 1)
         self.drop = nn.Dropout(0.3)
