@@ -51,7 +51,7 @@ class Decoder(nn.Module):
 
         decoderOutput = self.transformer_decoder(out, hidden)
         decoderOutput = torch.squeeze(decoderOutput, 1) # [batch, 768]
-        
+        print('check')
         decoderOutput= self.relu(decoderOutput)
         decoderOutput= self.drop(decoderOutput)
 
