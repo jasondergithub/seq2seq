@@ -48,10 +48,10 @@ class Decoder(nn.Module):
 
         out = self.linear1(h_cls)
         out = self.relu(out)
-
+        print(out)
         decoderOutput = self.transformer_decoder(out, hidden)
         decoderOutput = torch.squeeze(decoderOutput, 1) # [batch, 768]
-        print('check')
+        
         decoderOutput= self.relu(decoderOutput)
         decoderOutput= self.drop(decoderOutput)
 
