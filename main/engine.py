@@ -37,23 +37,18 @@ def train_fn(src_loader, trg_loader, model, optimizer, device, scheduler):
         trg_masks_tensor = trg_masks_tensor.to(device, dtype=torch.long)   
         trg_label_tensor = trg_label.to(device, dtype=torch.float)
 
-        target = [trg_tokens_tensor, trg_segments_tensor, trg_masks_tensor, trg_label_tensor]
+        target = [trg_tokens_tensor, trg_segments_tensor, trg_masks_tensor]
 
         optimizer.zero_grad()
         outputs = model(reference, target)
 
-     
+        loss = loss_fn(outputs, trg_label_tensor)
+        loss.backward()
+        optimizer.step()
+        scheduler.step()
 
+        fin_targets.extend(trg_label_tensor.cpu().detach().numpy().tolist())
+        fin_outputs.extend(torch.sigmoid(outputs).cpu().detach().numpy().tolist())
+        running_loss += loss.item()
 
-if __name__ == "__main__":
-    
-    with open('../table/table'+ str(1) +'.txt', 'rb') as fp:
-        table = pickle.load(fp)
-
-    encoder_trainset = ReferenceDataset('train', 1)
-    encoder_data_loader = DataLoader(encoder_trainset, batch_size=4, collate_fn=data_loader.create_encoder_batch)
-
-    decoder_trainset = TestDataset('train', 1)
-    decoder_data_loader = DataLoader(decoder_trainset, batch_size=16, collate_fn=data_loader.create_decoder_batch)
-
-    train_fn(encoder_data_loader, decoder_data_loader)
+    return fin_outputs, fin_targets, running_loss 
