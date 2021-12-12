@@ -45,9 +45,10 @@ class Decoder(nn.Module):
                 
         last_hidden_states = outputs.last_hidden_state
         h_cls = last_hidden_states[0] #only takes CLS as repr. which is [batch, 1, 768]
-
+        print(h_cls.shape)
         out = self.linear1(h_cls)
         out = self.relu(out)
+        out = 
         print(out.shape)
         decoderOutput = self.transformer_decoder(out, hidden)
         decoderOutput = torch.squeeze(decoderOutput, 1) # [batch, 768]
