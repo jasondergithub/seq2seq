@@ -12,13 +12,16 @@ keys_list = list(keywords)
 keyword_list = []
 
 # iterate files in the given directory
-directory = r'C:\Users\Jason\Documents\github\AI CUP\data\dataTrainComplete'
+directory = r'C:\Users\劉碩元\Desktop\seq2seq\data\dataTrainComplete'
+count = 0
 sentence = ''
 for filename in os.listdir(directory):
     with open('../data/dataTrainComplete/' + filename, 'r', encoding='utf-8') as f:
         for line in f:
-            sentence = line[:-1]
-            break   
+            sentence += line[:-1]
+            count += 1
+            if count == 2:
+                break   
     with open('../data/dataTrainComplete/' + filename, 'r', encoding='utf-8') as f:
         text = f.read()
 
@@ -31,8 +34,10 @@ for filename in os.listdir(directory):
         sentence += '。'
     sentence += ','.join(keyword_list)
     sentence += '。'
-
+   
     f = open('../processed_files/' + filename, 'w', encoding='UTF-8')
     f.write(sentence)
     f.close()
     keyword_list.clear()
+    count = 0
+    sentence = ''
