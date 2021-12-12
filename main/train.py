@@ -53,7 +53,7 @@ def run_train(tableNumber):
     ]
 
 
-    with open('../../table/table'+ str(tableNumber) +'.txt', 'rb') as fp:
+    with open('../table/table'+ str(tableNumber) +'.txt', 'rb') as fp:
         table = pickle.load(fp)
     length_df = len(table)
     num_train_steps = int(length_df / config.BATCH_SIZE * config.EPOCHS)
