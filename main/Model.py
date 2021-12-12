@@ -46,7 +46,7 @@ class Decoder(nn.Module):
         last_hidden_states = outputs.last_hidden_state
         h_cls = last_hidden_states[0] #only takes CLS as repr. which is [batch, 1, 768]
 
-        out = self.linear(h_cls)
+        out = self.linear1(h_cls)
         out = self.relu(out)
 
         decoderOutput = self.decoder(out, hidden)
