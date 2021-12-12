@@ -76,8 +76,8 @@ def run_train(tableNumber):
     torch.save(model.state_dict(), config.MODEL_PATH)
 
 if __name__ == "__main__":
-    for i in range(5):
-        print('-------------------------------------')
-        print(f'Table : {i+1}')
-        run_train(i+1)
-        print('-------------------------------------')
+
+    print('-------------------------------------')
+    config.EPOCHS = 5
+    run_train(100)
+    print('-------------------------------------')
