@@ -30,8 +30,8 @@ def run_train(tableNumber):
     decoder.to(device)
 
     model = Seq2Seq(encoder, decoder)
-    if tableNumber > 1:
-        model.load_state_dict(torch.load(config.MODEL_PATH))
+    # if tableNumber > 1:
+    #     model.load_state_dict(torch.load(config.MODEL_PATH))
     model.to(device)
 
     # I am not familiar with this part yet
