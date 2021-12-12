@@ -43,7 +43,8 @@ def train_fn(src_loader, trg_loader, model, optimizer, device, scheduler):
 
         optimizer.zero_grad()
         outputs = model(reference, target)
-
+        outputs = torch.squeeze(1)
+        
         loss = loss_fn(outputs, trg_label_tensor)
         loss.backward()
         optimizer.step()
