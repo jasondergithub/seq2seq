@@ -62,12 +62,11 @@ class Decoder(nn.Module):
         return decoderOutput
 
 class Seq2Seq(nn.Module):
-    def __init__(self, encoder, decoder, device):
+    def __init__(self, encoder, decoder):
         
         super(Seq2Seq, self).__init__()
         self.encoder = encoder
         self.decoder = decoder
-        self.device = device
 
     def forward(self, reference_data, trg_data):
 
