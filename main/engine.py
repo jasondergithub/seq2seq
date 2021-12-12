@@ -4,6 +4,7 @@ from encoderDataset import ReferenceDataset
 from decoderDataset import TestDataset
 import data_loader
 import torch
+import torch.nn as nn
 from torch.utils.data import DataLoader
 
 def loss_fn(outputs, targets):
