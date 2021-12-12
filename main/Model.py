@@ -31,7 +31,7 @@ class Decoder(nn.Module):
         super(Decoder, self).__init__()
         self.bert = BertModel(config.bert_config)
         self.linear1 = nn.Linear(768, 512)
-        self.decoder = nn.TransformerDecoder(
+        self.transformer_decoder = nn.TransformerDecoder(
             nn.TransformerDecoderLayer(d_model=512, nhead=2, batch_first=True), num_layers=6)
         self.linear2 = nn.Linear(512, 128)
         self.linear3 = nn.Linear(128, 1)
@@ -49,7 +49,7 @@ class Decoder(nn.Module):
         out = self.linear1(h_cls)
         out = self.relu(out)
 
-        decoderOutput = self.decoder(out, hidden)
+        decoderOutput = self.transformer_decoder(out, hidden)
         decoderOutput = torch.squeeze(decoderOutput, 1) # [batch, 768]
         
         decoderOutput= self.relu(decoderOutput)
