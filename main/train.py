@@ -20,7 +20,7 @@ def run_train(tableNumber):
     encoder_data_loader = DataLoader(encoder_trainset, batch_size=config.BATCH_SIZE, collate_fn=data_loader.create_encoder_batch)
 
     decoder_trainset = TestDataset('train', tableNumber)
-    decoder_data_loader = DataLoader(decoder_trainset, batch_size=config.BATCH_SIZE, collate_fn=data.create_decoder_batch)
+    decoder_data_loader = DataLoader(decoder_trainset, batch_size=config.BATCH_SIZE, collate_fn=data_loader.create_decoder_batch)
 
     device = torch.device(config.DEVICE)
     
