@@ -18,8 +18,9 @@ class Encoder(nn.Module):
             attention_mask = masks_tensors)
         
         last_hidden_states = outputs.last_hidden_state
-        h_cls = last_hidden_states[0] #only takes CLS as repr. which is [batch, 1, 768]
-
+        l_list = [torch.reshape(last_hidden_states[i][0], (1, 1, -1)) for i in range(len(last_hidden_states))] 
+        h_cls = torch.cat(l_list, dim=0) #only takes CLS as repr. which is [batch, 1, 768]
+        print(f"h_cls dim in encoder: {h_cls.shape}")
         out = self.linear(h_cls)
         out = self.relu(out)
 
@@ -44,8 +45,9 @@ class Decoder(nn.Module):
             attention_mask = masks_tensors)
                 
         last_hidden_states = outputs.last_hidden_state
-        h_cls = last_hidden_states[0] #only takes CLS as repr. which is [batch, 1, 768]
-        print(h_cls.shape)
+        l_list = [torch.reshape(last_hidden_states[i][0], (1, 1, -1)) for i in range(len(last_hidden_states))] 
+        h_cls = torch.cat(l_list, dim=0) #only takes CLS as repr. which is [batch, 1, 768]
+        print(f"h_cls dim in decoder: {h_cls.shape}")
         out = self.linear1(h_cls)
         out = self.relu(out)
         out = 
