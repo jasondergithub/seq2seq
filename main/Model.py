@@ -20,7 +20,7 @@ class Encoder(nn.Module):
         last_hidden_states = outputs.last_hidden_state
         l_list = [torch.reshape(last_hidden_states[i][0], (1, 1, -1)) for i in range(len(last_hidden_states))] 
         h_cls = torch.cat(l_list, dim=0) #only takes CLS as repr. which is [batch, 1, 768]
-        print(f"h_cls dim in encoder: {h_cls.shape}")
+
         out = self.linear(h_cls)
         out = self.relu(out)
 
@@ -47,7 +47,7 @@ class Decoder(nn.Module):
         last_hidden_states = outputs.last_hidden_state
         l_list = [torch.reshape(last_hidden_states[i][0], (1, 1, -1)) for i in range(len(last_hidden_states))] 
         h_cls = torch.cat(l_list, dim=0) #only takes CLS as repr. which is [batch, 1, 768]
-        print(f"h_cls dim in decoder: {h_cls.shape}")
+
         out = self.linear1(h_cls)
         out = self.relu(out)
 
