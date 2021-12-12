@@ -3,6 +3,7 @@ from tqdm import tqdm
 from encoderDataset import ReferenceDataset
 from decoderDataset import TestDataset
 import data_loader
+import torch
 from torch.utils.data import DataLoader
 
 def loss_fn(outputs, targets):
