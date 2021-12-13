@@ -2,7 +2,7 @@ from transformers import BertConfig, BertTokenizer
 from transformers.models import bert
 
 DEVICE = "cuda"
-EPOCHS = 2
+EPOCHS = 6
 BATCH_SIZE = 8
 tokenizer = BertTokenizer.from_pretrained('bert-base-chinese')
 MODEL_PATH = "../dict/saved_model.pth"
