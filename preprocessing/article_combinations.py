@@ -38,3 +38,5 @@ with open("../dict/relatedTable.txt", "wb") as fp:
     pickle.dump(first_stage_related_table, fp)
 with open("../dict/unrelatedTable.txt", "wb") as fp:
     pickle.dump(first_stage_unrelated_table, fp)
+
+#print(len(total_combinations))
