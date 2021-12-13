@@ -14,7 +14,7 @@ class TestDataset(Dataset):
             with open('../table/table'+ str(tableNumber) +'.txt', 'rb') as fp:
                 table = pickle.load(fp)
         else:
-            with open('../dict/first_stage_public_test.txt', 'rb') as fp:
+            with open('../dict/private_test.txt', 'rb') as fp:
                 table = pickle.load(fp)
         self.pairingTable =table 
         self.len = len(table)
@@ -50,7 +50,7 @@ class TestDataset(Dataset):
         else:
             num1 = self.pairingTable[index][0]
 
-            with open('../../public_processed_test_files/' + str(num1) + '.txt', 'r', encoding='UTF-8') as text1:
+            with open('../private_processed_test_files/' + str(num1) + '.txt', 'r', encoding='UTF-8') as text1:
                 file1 = text1.read()    
 
             inputs = self.tokenizer.encode_plus(
