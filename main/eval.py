@@ -29,3 +29,17 @@ decoder.to(device)
 model = Seq2Seq(encoder, decoder)
 model.load_state_dict(torch.load(config.MODEL_PATH))
 model.to(device)
+
+
+outputs = engine.eval_fn(encoder_data_loader, decoder_data_loader, model, device)
+outputs = np.array(outputs) >= 0.8
+
+with open('../dict/first_stage_public_test.txt', 'rb') as fp:
+     table = pickle.load(fp)
+
+for i, score in enumerate(outputs):
+    if score==1:
+        predictions.append((table[i][0], table[i][1]))
+
+with open("../dict/first_stage_predictions.txt", "wb") as fp:
+    pickle.dump(predictions, fp)
