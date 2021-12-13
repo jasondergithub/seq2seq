@@ -58,7 +58,6 @@ def train_fn(src_loader, trg_loader, model, optimizer, device, scheduler):
 
 def eval_fn(encoder_loader, decoder_loader, model, device):
     model.eval()
-    fin_targets = []
     fin_outputs = []
     with torch.no_grad():   
          for (src_data, trg_data) in tqdm(zip(encoder_loader, decoder_loader)):
@@ -83,7 +82,6 @@ def eval_fn(encoder_loader, decoder_loader, model, device):
             outputs = model(reference, target)
             outputs = torch.squeeze(outputs, 1) 
 
-            fin_targets.extend(target.cpu().detach().numpy().tolist())
             fin_outputs.extend(torch.sigmoid(outputs).cpu().detach().numpy().tolist())                              
     
-    return fin_outputs, fin_targets
+    return fin_outputs
