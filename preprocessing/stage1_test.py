@@ -13,9 +13,13 @@ for filename in os.listdir(directory):
 amount = len(total_articles)
 for i in range(amount):
     article_no = []
-    article_no.append(total_articles.pop(0))
+    list_pop = total_articles.pop(0)
+    article_no.append(list_pop)
     combination = list(itertools.product(article_no, total_articles))
     total_combinations += combination
+    total_articles.append(list_pop)
 
 with open("../dict/first_stage_public_test.txt", "wb") as fp:
     pickle.dump(total_combinations, fp)
+
+# print(len(total_combinations))
