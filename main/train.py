@@ -78,6 +78,6 @@ def run_train(tableNumber):
 if __name__ == "__main__":
 
     print('-------------------------------------')
-    config.EPOCHS = 5
+    #config.EPOCHS = 5
     run_train(100)
     print('-------------------------------------')

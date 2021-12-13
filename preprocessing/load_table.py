@@ -20,8 +20,8 @@ name_list = ['table1.txt', 'table2.txt', 'table3.txt', 'table4.txt', 'table5.txt
 #     with open("../table/" + name_list[i], "wb") as fp:
 #         pickle.dump(subtable, fp)
 
-subtable = random.sample(unrelated_table, 6905)
-for i in range(3):
+subtable = random.sample(unrelated_table, 6905) #8286
+for i in range(3): #4
     subtable += related_table
 
 random.shuffle(subtable)
